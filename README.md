@@ -20,6 +20,8 @@ Cloud Storage - armazenamento de objetos
 
 Filestore - servidor NFS de arquivos
 
+Persistent Disks - armazenamento em bloco para instâncias
+
 
 
 
