@@ -48,6 +48,8 @@ HTTP(S) Load Balancing - balanceador de carga com base no tipo de conteúdo
 
 Network Load Balancing - balanceador de carga de rede
 
+Google Cloud DNS - gerenciamento de registros DNS
+
 
 
 
