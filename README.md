@@ -1,18 +1,6 @@
-# Repo Template
-Repo template, using Codespaces and GitPod
+# Google Associate Cloud Engineer
 
-Template para repositórios, usando Codespaces e GitPod
+## Serviços
 
-## Extensions
-* AWS CLI
-* Microsoft PowerShell
-* Git Graph
-* Git-log
-* GitHub Actions
-* GitHub Copilot
-* GitHub Copilot Chat
-* github markdown preview
-
-## Extras
-Preconfigured AWS tokens (via Repository Secrets) 
+Compute Engine: VMs
 
