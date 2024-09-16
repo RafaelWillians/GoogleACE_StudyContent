@@ -36,6 +36,17 @@ Firestore - NoSQL tempo-real
 
 Memorystore - banco de dados de memória totalmente gerenciado
 
+### Redes
+
+Virtual Private Cloud (VPC) - redes e subredes
+
+Firewall Rules - firewall
+
+Routes - tabelas de rotas
+
+
+
+
 
 
 
