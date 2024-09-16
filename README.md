@@ -28,6 +28,17 @@ Cloud SQL - banco SQL totalmente gerenciado
 
 Cloud Spanner - banco SQL escalável multi-região ou global
 
+Bigtable - NoSQL totalmente gerenciado
+
+Datastore - NoSQL serverless
+
+Firestore - NoSQL tempo-real
+
+Memorystore - banco de dados de memória totalmente gerenciado
+
+
+
+
 
 
 
