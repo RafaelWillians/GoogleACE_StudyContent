@@ -18,6 +18,10 @@ Cloud Run - deploy apps conteinerizados (similar ao AWS Fargate) (FaaS)
 
 Cloud Storage - armazenamento de objetos
 
+Filestore - servidor NFS de arquivos
+
+
+
 
 
 
