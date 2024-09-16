@@ -12,5 +12,9 @@ App Engine: hospedar apps web totalmente gerenciado (PaaS)
 
 Cloud Functions: funções serverless (FaaS)
 
+Cloud Run: deploy apps conteinerizados (similar ao AWS Fargate) (FaaS)
+
+
+
 
 
