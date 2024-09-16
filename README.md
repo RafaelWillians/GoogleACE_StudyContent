@@ -50,6 +50,14 @@ Network Load Balancing - balanceador de carga de rede
 
 Google Cloud DNS - gerenciamento de registros DNS
 
+Cloud VPN - conexão ao Google Cloud pela Internet via VPN
+
+Direct Interconnect - conexão privada dedicada ao Google Cloud
+
+Direct Peering - conexão pela internet (pública) aos locais de peering do Google Cloud 
+
+Carrier Peering - conexão pela internet (pública) intermediada pelas ISPs ao peering do Google Cloud
+
 
 
 
