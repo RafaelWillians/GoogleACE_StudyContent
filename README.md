@@ -58,3 +58,6 @@ Direct Peering - conexão pela internet (pública) aos locais de peering do Goog
 
 Carrier Peering - conexão pela internet (pública) intermediada pelas ISPs ao peering do Google Cloud
 
+### Outros
+
+#### [Billing](./billing/README.md)
