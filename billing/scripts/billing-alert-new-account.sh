@@ -38,6 +38,10 @@ read -p "Monitoring channel display name: " \
 read -p "Channel Description: " \
   CHANNEL_DESCRIPTION
 
+# Teste: saída dos argumentos para checar os valores
+
+echo "$BUDGET_AMMOUNT , $THRESHOLD_PERCENT , $THRESHOLD_BASIS , $ALERT_EMAIL , $CHANNEL_DISPLAY_NAME, $CHANNEL_DESCRIPTION"
+
 # Verifica se foram passados os valores como argumento. 
 if [[ -z "$ALERT_EMAIL" || -z "$BUDGET_AMMOUNT" || -z "$THRESHOLD_PERCENT" ]]; then
   echo "Not enough arguments provided."
@@ -51,6 +55,16 @@ gcloud beta monitoring channels create \
   --type=email \
   --channel-labels=email_address=$ALERT_EMAIL
 
+
+ # Cria o orçamento
+  gcloud billing budgets create \
+    --billing-account=$BILLING_ACCOUNT \
+    --display-name=$DISPLAY_NAME \
+    --budget-amount=$BUDGET_AMMOUNT \
+    --alert-metadata email \
+    --alert-metadata-email $USER_EMAIL
+    --threshold-rule=percent=0.50 \
+    --threshold-rule=percent=0.75,basis=forecasted-spend
 
 
 
