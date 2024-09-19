@@ -19,9 +19,13 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-
-
-gcloud
+ # Cria o orçamento
+gcloud billing budgets create MyBudgetAlert \
+  --billing-account $BILLING_ACCOUNT \
+  --threshold 100 \
+  --threshold-unit USD \
+  --alert-metadata email \
+  --alert-metadata-email $USER_EMAIL
 
 
 
