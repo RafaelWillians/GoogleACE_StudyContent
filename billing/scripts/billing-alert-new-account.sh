@@ -55,7 +55,6 @@ gcloud beta monitoring channels create \
   --type=email \
   --channel-labels=email_address=$ALERT_EMAIL
 
-
  # Cria o orçamento
   gcloud billing budgets create \
     --billing-account=$BILLING_ACCOUNT \
