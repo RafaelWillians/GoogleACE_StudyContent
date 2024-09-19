@@ -10,22 +10,47 @@
 # Checa a billing account padrão criada e atribui à variável BILLING_ACCOUNT
 BILLING_ACCOUNT=$(gcloud billing accounts list --format='value(name)')
 
-# Atribui à variável os limites(threshold) que o usuário inserir como parâmetro
-BUDGET_THRESHOLD=$1
+# Faz a leitura do nome do orçamento
+read -p "Budget Name: " DISPLAY_NAME
 
-# Verifica se foram passados os limites como argumento. 
-if [ -z "$1" ]; then
-  echo "Budget threshold not provided."
+# Faz a leitura do limite desejado
+read -p "Insert one budget ammount in default currency(ex. 0.50 or 123.75): " \
+  BUDGET_AMMOUNT
+
+# Faz a leitura do percentual de limite (threshold)
+
+read -p "Insert one threshold value percent(ex. '0.50' for a 50% threshold)" \
+  THRESHOLD_PERCENT
+
+# Faz a leitura do tipo de base de cálculo (basis), se atualmente gasta ou prevista
+read -p "Insert 'c' for current-spend basis or 'p' for forecasted-spend basis" \
+  THRESHOLD_BASIS
+
+# Faz a leitura do email a ser adicionado para alerta
+read -p "Email for alerts: " \
+  ALERT_EMAIL
+
+# Faz a leitura do nome do canal de notificação
+read -p "Monitoring channel display name: " \
+  CHANNEL_DISPLAY_NAME
+
+# Faz a leitura da descrição do canal de notificação
+read -p "Channel Description: " \
+  CHANNEL_DESCRIPTION
+
+# Verifica se foram passados os valores como argumento. 
+if [[ -z "$ALERT_EMAIL" || -z "$BUDGET_AMMOUNT" || -z "$THRESHOLD_PERCENT" ]]; then
+  echo "Not enough arguments provided."
   exit 1
 fi
 
- # Cria o orçamento
-gcloud billing budgets create MyBudgetAlert \
-  --billing-account $BILLING_ACCOUNT \
-  --threshold 100 \
-  --threshold-unit USD \
-  --alert-metadata email \
-  --alert-metadata-email $USER_EMAIL
+# Cria o canal de notificação com o email inserido
+gcloud beta monitoring channels create \
+  --display-name=$CHANNEL_DISPLAY_NAME \
+  --description=$CHANNEL_DESCRIPTION \
+  --type=email \
+  --channel-labels=email_address=$ALERT_EMAIL
+
 
 
 
