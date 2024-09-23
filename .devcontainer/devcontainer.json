@@ -1,10 +1,10 @@
 {
 	"name": "Codespace Main",		
 	"dockerFile": "Dockerfile",
+	"postCreateCommand": "chmod +x .devcontainer/postCreate.sh && .devcontainer/postCreate.sh",
 	"features": {
 	  "ghcr.io/devcontainers/features/github-cli:1": {}
-	},
-	
+	},	
 	"customizations": {
 	  "vscode": {
 		"extensions": [
