@@ -56,7 +56,7 @@ fi
 
 # Checa se o tipo de base de cálculo recebeu valor correto
 # e atribui de acordo com o input do usuário
-if [[ ! "$THRESHOLD_BASIS" != "1" && "$THRESHOLD_BASIS" != "2" ]]; then
+if [[ "$THRESHOLD_BASIS" != "1" && "$THRESHOLD_BASIS" != "2" ]]; then
   echo "Invalid argument for spend basis."
   exit 1
 fi
