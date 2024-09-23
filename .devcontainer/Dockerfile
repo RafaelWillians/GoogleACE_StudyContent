@@ -1,28 +1,23 @@
-# Use the official image as a parent image
-FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
+# Usa uma imagem base, por exemplo, Debian
+FROM mcr.microsoft.com/vscode/devcontainers/base:debian
 
-# Set working directory
-WORKDIR /workspace
+# Instalar dependências necessárias para o Google Cloud SDK
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    gnupg \
+    curl \
+    lsb-release
 
-# Install dependencies
-RUN apt-get update && \
-    apt-get install -y curl unzip sudo
+# Adicionar a chave GPG do Google Cloud SDK
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 
-# Download, unzip, and install AWS CLI
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-    unzip awscliv2.zip && \
-    sudo ./aws/install
+# Instalar o Google Cloud SDK sem interação
+RUN apt-get update && apt-get install -y google-cloud-sdk
 
-# Download and install Microsoft Powershell
-RUN curl "https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb" -o "packages-microsoft-prod.deb" && \
-    sudo dpkg -i packages-microsoft-prod.deb && \
-    sudo apt-get update && \
-    sudo apt-get install -y powershell
+# Desativar prompts interativos do gcloud durante a build
+ENV CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
-# Set the working directory back
-WORKDIR $THEIA_WORKSPACE_ROOT
-
-# Clean up
-RUN rm -rf /workspace/awscliv2.zip /workspace/aws
-RUN rm -rf /workspace/packages-microsoft-prod.deb
-
+# Limpar cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
