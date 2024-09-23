@@ -2,7 +2,7 @@
 
 # Script para criar alerta de orçamento,
 # quando o gasto ultrapassar determinado valor passado por parâmetro
-# pelo usuário 
+# pelo usuário.
 
 # Por padrão este script irá checar a billing account (conta de faturamento)
 # padrão e utilizá-la para criar o alerta
@@ -23,7 +23,7 @@ read -p "Insert one threshold value percent(ex. '0.50' for a 50% threshold): " \
   THRESHOLD_PERCENT
 
 # Faz a leitura do tipo de base de cálculo (basis), se atualmente gasta ou prevista
-read -p "Insert 'c' for current-spend basis or 'p' for forecasted-spend basis: " \
+read -p "Insert '1' for current-spend basis or '2' for forecasted-spend basis: " \
   THRESHOLD_BASIS
 
 # Faz a leitura do email a ser adicionado para alerta
@@ -43,9 +43,30 @@ read -p "Channel Description: " \
 echo "$BUDGET_AMMOUNT , $THRESHOLD_PERCENT , $THRESHOLD_BASIS , $ALERT_EMAIL , $CHANNEL_DISPLAY_NAME, $CHANNEL_DESCRIPTION"
 
 # Verifica se foram passados os valores como argumento. 
-if [[ -z "$ALERT_EMAIL" || -z "$BUDGET_AMMOUNT" || -z "$THRESHOLD_PERCENT" ]]; then
+if [[ -z "$ALERT_EMAIL" ]] || \
+  [[ -z "$DISPLAY_NAME" ]] || \
+  [[ -z "$BUDGET_AMMOUNT" ]] || \
+  [[ -z "$THRESHOLD_PERCENT" ]] || \
+  [[ -z "$THRESHOLD_BASIS" ]] || \
+  [[ -z "$CHANNEL_DISPLAY_NAME" ]] || \
+  [[ -z "$CHANNEL_DESCRIPTION" ]]; then
   echo "Not enough arguments provided."
   exit 1
+fi
+
+# Checa se o tipo de base de cálculo recebeu valor correto
+# e atribui de acordo com o input do usuário
+if [[ ! "$THRESHOLD_BASIS" != "1" && "$THRESHOLD_BASIS" != "2" ]]; then
+  echo "Invalid argument for spend basis."
+  exit 1
+fi
+
+if [[ "$THRESHOLD_BASIS" == "1" ]]; then
+  THRESHOLD_BASIS="current-spend"  
+fi
+
+if [[ "$THRESHOLD_BASIS" == "2" ]]; then
+  THRESHOLD_BASIS="forecasted-spend"  
 fi
 
 # Cria o canal de notificação com o email inserido
@@ -56,14 +77,14 @@ gcloud beta monitoring channels create \
   --channel-labels=email_address=$ALERT_EMAIL
 
  # Cria o orçamento
-  gcloud billing budgets create \
+  gcloud beta billing budgets create \
     --billing-account=$BILLING_ACCOUNT \
     --display-name=$DISPLAY_NAME \
     --budget-amount=$BUDGET_AMMOUNT \
     --alert-metadata email \
     --alert-metadata-email $USER_EMAIL \
-    --threshold-rule=percent=0.50 \
-    --threshold-rule=percent=0.75,basis=forecasted-spend
+    --threshold-rule=percent=$THRESHOLD_PERCENT,basis=$THRESHOLD_BASIS \
+    --threshold-rule=percent=1,basis=$THRESHOLD_BASIS
 
 
 
