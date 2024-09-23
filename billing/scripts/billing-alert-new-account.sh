@@ -10,6 +10,14 @@
 # Checa a billing account padrão criada e atribui à variável BILLING_ACCOUNT
 BILLING_ACCOUNT=$(gcloud billing accounts list --format='value(name)')
 
+# Checa o projeto padrão configurado
+DEFAULT_PROJECT=$(gcloud config get-value project)
+
+# Caso esteja vazio, atribui o primeiro projeto listado
+if [[ -z "$DEFAULT_PROJECT" ]]; then
+  DEFAULT_PROJECT=$(gcloud projects list --format="value(projectId)" --limit=1)
+fi
+
 # Faz a leitura do nome do orçamento
 read -p "Budget Name: " DISPLAY_NAME
 
@@ -76,13 +84,16 @@ gcloud beta monitoring channels create \
   --type=email \
   --channel-labels=email_address=$ALERT_EMAIL
 
+# Atribui o ID do canal de notificação
+NOTIFICATION_CHANNEL_ID=$(gcloud beta monitoring channels list | grep "$CHANNEL_DISPLAY_NAME" | awk '{print $1}')
+
  # Cria o orçamento
   gcloud beta billing budgets create \
     --billing-account=$BILLING_ACCOUNT \
     --display-name=$DISPLAY_NAME \
     --budget-amount=$BUDGET_AMMOUNT \
-    --alert-metadata email \
-    --alert-metadata-email $USER_EMAIL \
+    --all-updates-rule-monitoring-notification-channels $NOTIFICATION_CHANNEL_ID \
+    --filter-projects=$DEFAULT_PROJECT \
     --threshold-rule=percent=$THRESHOLD_PERCENT,basis=$THRESHOLD_BASIS \
     --threshold-rule=percent=1,basis=$THRESHOLD_BASIS
 
