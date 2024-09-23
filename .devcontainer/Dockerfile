@@ -1,28 +1,40 @@
-# Use the official image as a parent image
-FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
+FROM docker:17.12.0-ce as static-docker-source
 
-# Set working directory
-WORKDIR /workspace
+FROM debian:stretch
+ARG CLOUD_SDK_VERSION=232.0.0
+ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
-# Install dependencies
-RUN apt-get update && \
-    apt-get install -y curl unzip sudo
-
-# Download, unzip, and install AWS CLI
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-    unzip awscliv2.zip && \
-    sudo ./aws/install
-
-# Download and install Microsoft Powershell
-RUN curl "https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb" -o "packages-microsoft-prod.deb" && \
-    sudo dpkg -i packages-microsoft-prod.deb && \
-    sudo apt-get update && \
-    sudo apt-get install -y powershell
-
-# Set the working directory back
-WORKDIR $THEIA_WORKSPACE_ROOT
-
-# Clean up
-RUN rm -rf /workspace/awscliv2.zip /workspace/aws
-RUN rm -rf /workspace/packages-microsoft-prod.deb
-
+COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
+RUN apt-get -qqy update && apt-get install -qqy \
+        curl \
+        gcc \
+        python-dev \
+        python-setuptools \
+        apt-transport-https \
+        lsb-release \
+        openssh-client \
+        git \
+        gnupg \
+    && easy_install -U pip && \
+    pip install -U crcmod   && \
+    export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
+    echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" > /etc/apt/sources.list.d/google-cloud-sdk.list && \
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+    apt-get update && \
+    apt-get install -y google-cloud-sdk=${CLOUD_SDK_VERSION}-0 \
+        google-cloud-sdk-app-engine-python=${CLOUD_SDK_VERSION}-0 \
+        google-cloud-sdk-app-engine-python-extras=${CLOUD_SDK_VERSION}-0 \
+        google-cloud-sdk-app-engine-java=${CLOUD_SDK_VERSION}-0 \
+        google-cloud-sdk-app-engine-go=${CLOUD_SDK_VERSION}-0 \
+        google-cloud-sdk-datalab=${CLOUD_SDK_VERSION}-0 \
+        google-cloud-sdk-datastore-emulator=${CLOUD_SDK_VERSION}-0 \
+        google-cloud-sdk-pubsub-emulator=${CLOUD_SDK_VERSION}-0 \
+        google-cloud-sdk-bigtable-emulator=${CLOUD_SDK_VERSION}-0 \
+        google-cloud-sdk-cbt=${CLOUD_SDK_VERSION}-0 \
+        kubectl && \
+    gcloud config set core/disable_usage_reporting true && \
+    gcloud config set component_manager/disable_update_check true && \
+    gcloud config set metrics/environment github_docker_image && \
+    gcloud --version && \
+    docker --version && kubectl version --client
+VOLUME ["/root/.config"]
