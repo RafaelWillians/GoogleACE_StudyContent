@@ -1,28 +1,23 @@
-# Use the official image as a parent image
-FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
+# Usa uma imagem base, por exemplo, Debian
+FROM mcr.microsoft.com/vscode/devcontainers/base:debian
 
-# Atualiza o sistema de pacotes
+# Instalar dependências necessárias para o Google Cloud SDK
 RUN apt-get update && apt-get install -y \
-    curl \
-    wget \
+    apt-transport-https \
     ca-certificates \
-    apt-transport-https
+    gnupg \
+    curl \
+    lsb-release
 
-# Adiciona o repositório do Google Cloud SDK
-RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/cloud-sdk.list \
-    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+# Adicionar a chave GPG do Google Cloud SDK
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 
-# Atualiza o sistema de pacotes e instala o Google Cloud SDK
+# Instalar o Google Cloud SDK sem interação
 RUN apt-get update && apt-get install -y google-cloud-sdk
 
-# Inicializa o gcloud
-RUN gcloud init
+# Desativar prompts interativos do gcloud durante a build
+ENV CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
-# # Copia seu arquivo de configuração (opcional)
-# COPY gcloud.json /root/.config/gcloud/
-
-# Define o usuário padrão
-USER nonroot
-
-# Comando padrão para executar ao iniciar o container
-CMD ["bash"]
+# Limpar cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
