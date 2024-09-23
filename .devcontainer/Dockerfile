@@ -1,5 +1,5 @@
-# Use a imagem base Debian slim
-FROM debian:slim-buster
+# Use the official image as a parent image
+FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
 
 # Atualiza o sistema de pacotes
 RUN apt-get update && apt-get install -y \
