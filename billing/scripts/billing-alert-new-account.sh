@@ -48,7 +48,7 @@ read -p "Channel Description: " \
 
 # Teste: saída dos argumentos para checar os valores
 
-echo "$BUDGET_AMMOUNT , $THRESHOLD_PERCENT , $THRESHOLD_BASIS , $ALERT_EMAIL , $CHANNEL_DISPLAY_NAME, $CHANNEL_DESCRIPTION"
+echo "$BUDGET_AMMOUNT , $THRESHOLD_PERCENT , $THRESHOLD_BASIS , $ALERT_EMAIL , $CHANNEL_DISPLAY_NAME, $CHANNEL_DESCRIPTION, $DISPLAY_NAME"
 
 # Verifica se foram passados os valores como argumento. 
 if [[ -z "$ALERT_EMAIL" ]] || \
@@ -93,7 +93,6 @@ NOTIFICATION_CHANNEL_ID=$(gcloud beta monitoring channels list | grep "$CHANNEL_
     --display-name=$DISPLAY_NAME \
     --budget-amount=$BUDGET_AMMOUNT \
     --all-updates-rule-monitoring-notification-channels $NOTIFICATION_CHANNEL_ID \
-    --filter-projects=$DEFAULT_PROJECT \
     --threshold-rule=percent=$THRESHOLD_PERCENT,basis=$THRESHOLD_BASIS \
     --threshold-rule=percent=1,basis=$THRESHOLD_BASIS
 
