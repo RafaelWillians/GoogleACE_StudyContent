@@ -61,7 +61,7 @@ gcloud beta monitoring channels create \
     --display-name=$DISPLAY_NAME \
     --budget-amount=$BUDGET_AMMOUNT \
     --alert-metadata email \
-    --alert-metadata-email $USER_EMAIL
+    --alert-metadata-email $USER_EMAIL \
     --threshold-rule=percent=0.50 \
     --threshold-rule=percent=0.75,basis=forecasted-spend
 
