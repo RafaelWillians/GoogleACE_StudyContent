@@ -92,7 +92,7 @@ NOTIFICATION_CHANNEL_ID=$(gcloud beta monitoring channels list | grep "$CHANNEL_
     --billing-account=$BILLING_ACCOUNT \
     --display-name=$DISPLAY_NAME \
     --budget-amount=$BUDGET_AMMOUNT \
-    --all-updates-rule-monitoring-notification-channels $NOTIFICATION_CHANNEL_ID \
+    --all-updates-rule-monitoring-notification-channels=$NOTIFICATION_CHANNEL_ID \
     --threshold-rule=percent=$THRESHOLD_PERCENT,basis=$THRESHOLD_BASIS \
     --threshold-rule=percent=1,basis=$THRESHOLD_BASIS
 
