@@ -1,11 +1,15 @@
 {
 	"name": "Codespace Main",		
 	"dockerFile": "Dockerfile",
+	"postCreateCommand": "chmod +x gcloud-login.sh && echo 'Execute ./gcloud-login.sh to login to GCP' ",
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},	
 	"customizations": {
-		"vscode": {						
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash"
+			},						
 			"extensions": [
 			"mhutchie.git-graph",
 			"phil294.git-log--graph",			
