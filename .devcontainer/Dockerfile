@@ -1,6 +1,9 @@
-FROM docker:17.12.0-ce as static-docker-source
+# Use the official image as a parent image
+FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
 
-FROM debian:stretch
+# Set working directory
+WORKDIR /workspace
+
 ARG CLOUD_SDK_VERSION=232.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
