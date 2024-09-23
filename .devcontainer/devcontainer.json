@@ -2,6 +2,7 @@
 	"name": "Codespace Main",		
 	"dockerFile": "Dockerfile",
 	// "postCreateCommand": "code -r . && code --new-window --wait && bash -c 'chmod u+x .devcontainer/postCreate.sh && .devcontainer/postCreate.sh'",
+	"postCreateCommand": "bash -c 'chmod u+x .devcontainer/postCreate.sh && .devcontainer/postCreate.sh'",
 	
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {}
