@@ -1,8 +1,6 @@
 {
 	"name": "Codespace Main",		
-	"dockerFile": "Dockerfile",
-	"postCreateCommand": "code --new-window --wait && bash -c 'chmod u+x .devcontainer/postCreate.sh && .devcontainer/postCreate.sh'",	
-	
+	"dockerFile": "Dockerfile",	
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},	
@@ -11,16 +9,16 @@
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "bash"
 			},
-			// "tasks": {
-			// 	"label": "Google Cloud Login",
-			// 	"type": "shell",
-			// 	"command": "chmod u+x .devcontainer/postCreate.sh && .devcontainer/postCreate.sh",
-			// 	"group": {
-			// 		"kind": "build",
-			// 		"isDefault": true
-			// 	}
+			"tasks": {
+				"label": "Google Cloud Login",
+				"type": "shell",
+				"command": "chmod u+x .devcontainer/postCreate.sh && .devcontainer/postCreate.sh",
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				}
 
-			// },
+			},
 			"extensions": [
 			"mhutchie.git-graph",
 			"phil294.git-log--graph",			
