@@ -1,13 +1,16 @@
 {
 	"name": "Codespace Main",		
 	"dockerFile": "Dockerfile",
-	"postCreateCommand": "bash chmod +x .devcontainer/postCreate.sh && bash .devcontainer/postCreate.sh",
+	"postCreateCommand": "chmod +x .devcontainer/postCreate.sh && .devcontainer/postCreate.sh",
 	"features": {
-	  "ghcr.io/devcontainers/features/github-cli:1": {}
+		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},	
 	"customizations": {
-	  "vscode": {
-		"extensions": [
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash"
+			},
+			"extensions": [
 			"mhutchie.git-graph",
 			"phil294.git-log--graph",			
 			"github.vscode-github-actions",
