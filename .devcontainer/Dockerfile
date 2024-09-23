@@ -18,8 +18,8 @@ RUN apt-get update && apt-get install -y google-cloud-sdk
 # Inicializa o gcloud
 RUN gcloud init
 
-# Copia seu arquivo de configuração (opcional)
-COPY gcloud.json /root/.config/gcloud/
+# # Copia seu arquivo de configuração (opcional)
+# COPY gcloud.json /root/.config/gcloud/
 
 # Define o usuário padrão
 USER nonroot
