@@ -88,11 +88,13 @@ gcloud beta monitoring channels create \
 # NOTIFICATION_CHANNEL_ID=$(gcloud beta monitoring channels list | grep "$CHANNEL_DISPLAY_NAME" | awk '{print $1}')
 NOTIFICATION_CHANNEL_ID=$(gcloud beta monitoring channels list --format=json | jq '.[] | select(.displayName == "'"$CHANNEL_DISPLAY_NAME"'") | .name' | sed 's/"//g')
 
+BUDGET_AMMOUNT_CONVERTED="$BUDGET_AMMOUNT""BRL"
+
  # Cria o orçamento
   gcloud beta billing budgets create \
     --billing-account=$BILLING_ACCOUNT \
     --display-name=$DISPLAY_NAME \
-    --budget-amount=$BUDGET_AMMOUNT"BRL" \
+    --budget-amount=$BUDGET_AMMOUNT_CONVERTED \
     --all-updates-rule-monitoring-notification-channels=$NOTIFICATION_CHANNEL_ID \
     --ownership-scope=all-users \
     --threshold-rule=percent=$THRESHOLD_PERCENT,basis=$THRESHOLD_BASIS \
