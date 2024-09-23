@@ -92,7 +92,7 @@ NOTIFICATION_CHANNEL_ID=$(gcloud beta monitoring channels list --format=json | j
   gcloud beta billing budgets create \
     --billing-account=$BILLING_ACCOUNT \
     --display-name=$DISPLAY_NAME \
-    --budget-amount=$BUDGET_AMMOUNT \
+    --budget-amount=$BUDGET_AMMOUNT"BRL" \
     --all-updates-rule-monitoring-notification-channels=$NOTIFICATION_CHANNEL_ID \
     --ownership-scope=all-users \
     --threshold-rule=percent=$THRESHOLD_PERCENT,basis=$THRESHOLD_BASIS \
