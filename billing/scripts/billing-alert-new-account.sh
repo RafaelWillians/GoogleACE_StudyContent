@@ -21,12 +21,15 @@ fi
 # Faz a leitura do nome do orçamento
 read -p "Budget Name: " DISPLAY_NAME
 
-# Faz a leitura do limite desejado
-read -p "Insert one budget ammount in default currency(ex. 0.50 or 123.75): " \
+# Faz a leitura do limite desejado (no momento não funcionou corretamente ao inserir decimais)
+read -p "Insert one budget ammount in default currency(integer only): " \
   BUDGET_AMMOUNT
 
-# Faz a leitura do percentual de limite (threshold)
+# Faz a leitura da moeda atual
+read -p "Insert the default currency(ex. "USD", "EUR", "BRL"): " \
+  BUDGET_CURRENCY
 
+# Faz a leitura do percentual de limite (threshold)
 read -p "Insert one threshold value percent(ex. '0.50' for a 50% threshold): " \
   THRESHOLD_PERCENT
 
@@ -45,10 +48,6 @@ read -p "Monitoring channel display name: " \
 # Faz a leitura da descrição do canal de notificação
 read -p "Channel Description: " \
   CHANNEL_DESCRIPTION
-
-# Teste: saída dos argumentos para checar os valores
-
-echo "$BUDGET_AMMOUNT , $THRESHOLD_PERCENT , $THRESHOLD_BASIS , $ALERT_EMAIL , $CHANNEL_DISPLAY_NAME, $CHANNEL_DESCRIPTION, $DISPLAY_NAME"
 
 # Verifica se foram passados os valores como argumento. 
 if [[ -z "$ALERT_EMAIL" ]] || \
@@ -69,6 +68,7 @@ if [[ "$THRESHOLD_BASIS" != "1" && "$THRESHOLD_BASIS" != "2" ]]; then
   exit 1
 fi
 
+# Checa qual tipo de base de cálculo foi inserido
 if [[ "$THRESHOLD_BASIS" == "1" ]]; then
   THRESHOLD_BASIS="current-spend"  
 fi
@@ -85,18 +85,20 @@ gcloud beta monitoring channels create \
   --channel-labels=email_address=$ALERT_EMAIL
 
 # Atribui o ID do canal de notificação
-# NOTIFICATION_CHANNEL_ID=$(gcloud beta monitoring channels list | grep "$CHANNEL_DISPLAY_NAME" | awk '{print $1}')
-NOTIFICATION_CHANNEL_ID=$(gcloud beta monitoring channels list --format=json | jq '.[] | select(.displayName == "'"$CHANNEL_DISPLAY_NAME"'") | .name' | sed 's/"//g')
+NOTIFICATION_CHANNEL_ID=$(gcloud beta monitoring channels list --format=json \
+  | jq '.[] | select(.displayName == "'"$CHANNEL_DISPLAY_NAME"'") | .name' \
+  | sed 's/"//g')
 
-BUDGET_AMMOUNT_CONVERTED="$BUDGET_AMMOUNT""USD"
+# Converte para ter o valor do orçamento e a moeda
+BUDGET_AMMOUNT_CONVERTED="$BUDGET_AMMOUNT""$BUDGET_CURRENCY"
 
- # Cria o orçamento
-  gcloud beta billing budgets create \
-    --billing-account=$BILLING_ACCOUNT \
-    --display-name=$DISPLAY_NAME \
-    --budget-amount=$BUDGET_AMMOUNT_CONVERTED \
-    --all-updates-rule-monitoring-notification-channels=$NOTIFICATION_CHANNEL_ID \
-    --ownership-scope=all-users \
-    --threshold-rule=percent=$THRESHOLD_PERCENT,basis=$THRESHOLD_BASIS \
-    --threshold-rule=percent=1,basis=$THRESHOLD_BASIS \
-    --calendar-period=month \
+# Cria o orçamento
+gcloud beta billing budgets create \
+  --billing-account=$BILLING_ACCOUNT \
+  --display-name=$DISPLAY_NAME \
+  --budget-amount=$BUDGET_AMMOUNT_CONVERTED \
+  --all-updates-rule-monitoring-notification-channels=$NOTIFICATION_CHANNEL_ID \
+  --ownership-scope=all-users \
+  --threshold-rule=percent=$THRESHOLD_PERCENT,basis=$THRESHOLD_BASIS \
+  --threshold-rule=percent=1,basis=$THRESHOLD_BASIS \
+  --calendar-period=month \
