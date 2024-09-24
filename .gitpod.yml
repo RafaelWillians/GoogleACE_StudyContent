@@ -13,6 +13,4 @@ vscode:
     - mhutchie.git-graph
     - phil294.git-log--graph
     - github.vscode-github-actions
-    - GitHub.copilot
-    - GitHub.copilot-chat
-    - bierner.github-markdown-preview
+    - bierner.markdown-preview-github-styles
