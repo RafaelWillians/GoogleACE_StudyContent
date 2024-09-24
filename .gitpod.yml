@@ -17,16 +17,5 @@ vscode:
     - GitHub.copilot-chat
     - bierner.github-markdown-preview
 
-github:
-  prebuilds:
-    # Ensure that prebuilds are used for the main branch and pull/merge requests
-    branches:
-      - main
-    pullRequests: true
-    # Trigger a new prebuild for any change in the repository
-    watchPaths:
-      - "**/*"
-
-
       
       
