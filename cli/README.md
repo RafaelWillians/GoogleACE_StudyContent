@@ -22,7 +22,30 @@ Revogar credencial
 gcloud auth revoke email@example.com
 ```
 
-Lista informações sobre o SDK
+Lista todas as informações sobre o SDK
 ```
 gcloud info
+```
+
+Os comandos abaixo vão permitir criar ou selecionar configurações específicas.
+Estas configurações são os perfis dentro do SDK. Servem por exemplo para termos um perfil para cada usuário, ou para cada projeto. Podemos ter mais de uma configuração no SDK, mas somente pode ter uma conta ativa por configuração.
+
+Lista as informações da configuração ativa no momento
+```
+gcloud config list
+```
+
+Lista as configurações disponíveis
+```
+gcloud config configurations list
+```
+
+Seleciona a configuração desejada
+```
+gcloud config configurations activate config-name
+```
+
+Criar configuração
+```
+gcloud config configurations create config-name
 ```
