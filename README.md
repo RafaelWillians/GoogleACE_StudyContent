@@ -6,7 +6,7 @@ Caso desejar, execute o script ./gcloud-login.sh para efetuar login no Google Cl
 
 ## Serviços
 
-### [CLI - Lista de Commandos Básicos]()
+### [CLI - Lista de Commandos Básicos](./cli/README.md)
 
 ### Computação
 
