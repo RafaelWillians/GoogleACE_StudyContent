@@ -6,6 +6,8 @@ Caso desejar, execute o script ./gcloud-login.sh para efetuar login no Google Cl
 
 ## Serviços
 
+### [CLI - Lista de Commandos Básicos]()
+
 ### Computação
 
 Compute Engine - subir VMs (IaaS)
