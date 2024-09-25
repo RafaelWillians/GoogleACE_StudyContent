@@ -49,3 +49,23 @@ Criar configuração
 ```
 gcloud config configurations create config-name
 ```
+
+Listar propriedades de configuração específica
+```
+gcloud config configurations describe config-name
+```
+
+Selecionar projeto específico
+```
+gcloud config set project name-project
+```
+
+Mostrar a região ativa
+```
+gcloud config get compute/zone
+```
+
+Selecionar a zona. Neste exemplo, irá mudar para a região us-east1 .
+```
+gcloud config set compute/zone us-east1
+```
