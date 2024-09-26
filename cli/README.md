@@ -81,3 +81,9 @@ Permite executar os comandos via CLI de forma mais intuitiva.
 gcloud beta interative
 ```
 
+## Cloud Shell
+
+Identificar qual região a VM do Cloud Shell está em execução. 
+```
+curl metadata/computeMetadata/v1/instance/zone
+```
