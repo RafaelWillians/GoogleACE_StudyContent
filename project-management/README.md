@@ -35,7 +35,7 @@ Excluir projeto.
 gcloud projects delete exemplo-nome-projeto-1234
 ```
 
-Recuperar projeto excluído (até 30 dias para recuperar após exclusão)
+Restaurar projeto excluído (até 30 dias para recuperar após exclusão)
 ```
 gcloud projects undelete exemplo-nome-projeto-1234
 ```
