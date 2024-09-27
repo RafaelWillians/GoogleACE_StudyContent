@@ -15,7 +15,10 @@ Criar um projeto a um ID de organização específico
 gcloud projects create exemplo-nome-projeto-1234 --organization=id_organization
 ```
 
-
+Criar um projeto a um ID de diretório específico
+```
+gcloud projects create exemplo-nome-projeto-1234 --folder=id_folder
+```
 
 
 
