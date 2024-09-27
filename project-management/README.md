@@ -20,6 +20,22 @@ Criar um projeto a um ID de diretório específico
 gcloud projects create exemplo-nome-projeto-1234 --folder=id_folder
 ```
 
+Listar os projetos
+```
+gcloud projects list
+```
 
+Ver detalhes de projeto específico
+```
+gcloud projects describe exemplo-nome-projeto-1234
+```
 
+Excluir projeto.
+```
+gcloud projects delete exemplo-nome-projeto-1234
+```
 
+Recuperar projeto excluído (até 30 dias para recuperar após exclusão)
+```
+gcloud projects undelete exemplo-nome-projeto-1234
+```
