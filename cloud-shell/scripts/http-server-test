@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd `mktemp -d` \
+&& echo '<html><h1>Hello World!</h1></html>' >./index.html \
+&& python3 -m http.server 8080
