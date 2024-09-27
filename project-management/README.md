@@ -10,6 +10,13 @@ Criar um projeto.
 gcloud projects create exemplo-nome-projeto-1234
 ```
 
+Criar um projeto a um ID de organização específico
+```
+gcloud projects create exemplo-nome-projeto-1234 --organization=id_organization
+```
+
+
+
 
 
 
