@@ -82,6 +82,8 @@ gcloud beta interative
 ```
 
 Atribui como projeto padrão o primeiro projeto da lista de projetos atribuídos à conta conectada.
+Útil caso a conta esteja em um único projeto, irá atribuir sempre o mesmo.
+
 ```
 gcloud config set project $(gcloud projects list --format="value(projectId)" --limit=1)
 ```
@@ -92,3 +94,23 @@ Identificar qual região a VM do Cloud Shell está em execução.
 ```
 curl metadata/computeMetadata/v1/instance/zone
 ```
+
+Configurar para sempre que iniciar o Cloud Shell, atribuir como padrão o primeiro projeto listado na conta ou o único projeto que tem na conta:
+
+* Executar o comando abaixo.
+```
+edit ~/.bashrc
+```
+
+* Depois, no final do arquivo adicionar o comando abaixo.
+```
+gcloud config set project $(gcloud projects list --format="value(projectId)" --limit=1)
+```
+
+* Salvar o arquivo.
+
+* Depois, executar o comando abaixo e testar.
+```
+source ~/.bashrc
+```
+
