@@ -4,9 +4,15 @@ Repositório com conteúdos de estudo da certificação Google ACE e utilitário
 Repositório com Google SDK já pronto para usar via GitHub Codespaces. Em breve estará pré-configurado para GitPod.
 Caso desejar, execute o script ./gcloud-login.sh para efetuar login no Google Cloud via terminal.
 
-## Serviços
+## Utilitários
 
 ### [CLI - Lista de Commandos Básicos](./cli/README.md)
+
+### [Billing](/billing/README.md)
+
+### [Cloud Shell](/cloud-shell/README.md)
+
+## Serviços
 
 ### Computação
 
@@ -63,9 +69,3 @@ Direct Interconnect - conexão privada dedicada ao Google Cloud
 Direct Peering - conexão pela internet (pública) aos locais de peering do Google Cloud 
 
 Carrier Peering - conexão pela internet (pública) intermediada pelas ISPs ao peering do Google Cloud
-
-### Outros
-
-#### [Billing](/billing/README.md)
-
-#### [Cloud Shell](/cloud-shell/README.md)
