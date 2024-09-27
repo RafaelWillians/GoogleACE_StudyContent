@@ -66,6 +66,6 @@ Carrier Peering - conexão pela internet (pública) intermediada pelas ISPs ao p
 
 ### Outros
 
-#### [Billing](./billing/README.md)
+#### [Billing](/billing/README.md)
 
-Cloud Shell
+#### [Cloud Shell](/cloud-shell/README.md)
