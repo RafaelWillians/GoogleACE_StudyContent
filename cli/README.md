@@ -81,6 +81,12 @@ Permite executar os comandos via CLI de forma mais intuitiva.
 gcloud beta interative
 ```
 
+Atribui como projeto padrão o primeiro projeto da lista de projetos atribuídos à conta conectada.
+```
+gcloud config set project $(gcloud projects list --format="value(projectId)" --limit=1)
+
+```
+
 ## Cloud Shell
 
 Identificar qual região a VM do Cloud Shell está em execução. 
