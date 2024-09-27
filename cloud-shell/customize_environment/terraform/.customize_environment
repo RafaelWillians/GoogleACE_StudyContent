@@ -1,0 +1,7 @@
+#!/bin/bash
+
+TERRAFORM_VERSION="1.5.5"
+
+curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+unzip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin
