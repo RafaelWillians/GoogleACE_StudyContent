@@ -84,7 +84,6 @@ gcloud beta interative
 Atribui como projeto padrão o primeiro projeto da lista de projetos atribuídos à conta conectada.
 ```
 gcloud config set project $(gcloud projects list --format="value(projectId)" --limit=1)
-
 ```
 
 ## Cloud Shell
