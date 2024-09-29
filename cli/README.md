@@ -114,3 +114,11 @@ gcloud config set project $(gcloud projects list --format="value(projectId)" --l
 source ~/.bashrc
 ```
 
+## IAM
+
+Mostrar a política do IAM (em JSON ou YAML).
+```
+gcloud projects get-iam-policy nome-policy-1234
+```
+
+
