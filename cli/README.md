@@ -116,9 +116,19 @@ source ~/.bashrc
 
 ## IAM
 
-Mostrar a política do IAM (em JSON ou YAML).
+Mostrar a política IAM (em JSON ou YAML) de um projeto.
 ```
 gcloud projects get-iam-policy nome-policy-1234
+```
+
+Mostrar a política IAM de um diretório (folder).
+```
+gcloud resource-manager folders get-iam-policy id-folder
+```
+
+Mostrar a política IAM de uma organização.
+```
+gcloud organizations get-iam-policy id-organization
 ```
 
 
