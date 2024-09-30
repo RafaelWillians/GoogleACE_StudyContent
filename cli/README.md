@@ -131,7 +131,7 @@ Mostrar a política IAM de uma organização.
 gcloud organizations get-iam-policy id-organization
 ```
 
-Atribui uma política em YAML ao projeto.
+Atribui uma política em YAML ao projeto. Requer 7 minutos para replicar a alteração no Google Cloud.
 ```
 gcloud projects set-iam-policy nome-projeto-1234 policy.yaml
 ```
