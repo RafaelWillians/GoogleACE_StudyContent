@@ -121,6 +121,11 @@ Mostrar a política IAM (em JSON ou YAML) de um projeto.
 gcloud projects get-iam-policy nome-projeto-1234
 ```
 
+Salvar em arquivo a política IAM de um projeto.
+```
+gcloud projects get-iam-policy nome-projeto-1234 > policy1.yaml
+```
+
 Mostrar a política IAM de um diretório (folder).
 ```
 gcloud resource-manager folders get-iam-policy id-folder
