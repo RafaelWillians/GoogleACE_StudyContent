@@ -158,6 +158,9 @@ Criar conta de serviço
 gcloud iam service-accounts create nome-service-account123 --display-name='conta-servico-teste'
 ```
 
-
+Atribuir role storage.objectViewer à conta de serviço
+```
+gcloud projects add-iam-policy-binding nome-projeto-1234 --member 'serviceAccount:nome-service-account123@nome-projeto-1234.iam.gserviceaccount.com' --role 'roles/storage.objectViewer'
+```
 
 
