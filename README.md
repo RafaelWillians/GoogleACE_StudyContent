@@ -69,3 +69,7 @@ Direct Interconnect - conexão privada dedicada ao Google Cloud
 Direct Peering - conexão pela internet (pública) aos locais de peering do Google Cloud 
 
 Carrier Peering - conexão pela internet (pública) intermediada pelas ISPs ao peering do Google Cloud
+
+### Identidade e Acesso
+
+IAM - Criar e gerenciar usuários
