@@ -141,3 +141,9 @@ Atribui uma política em YAML ao projeto. Requer 7 minutos para replicar a alte
 gcloud projects set-iam-policy nome-projeto-1234 policy.yaml
 ```
 
+Atribui a role storage.admin ao usuário teste@gmail.com .
+
+Mais precisamente, adiciona a policy binding de atribuir essa role a este usuário, na política IAM do projeto "nome-projeto-1234". 
+```
+gcloud projects add-iam-policy-binding nome-projeto-1234 --member user:teste@gmail.com --role roles/storage.admin
+```
