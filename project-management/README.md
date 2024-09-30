@@ -3,7 +3,7 @@
 Projetos servem para ramificar as implementações, departamentos e/ou projetos criados no Google Cloud.
 Ao criar, o nome do projeto não precisa ser único. Porém o ID de projeto (e o número de projeto - que é gerado automaticamente) necessita ser único em todo Google Cloud.
 
-## Cenário com projeto contas de faturamento
+## Cenário de projeto não encontrado por conta raíz - contas de faturamento
 
 No Google Cloud, você pode trabalhar com a hierarquia de ter uma organização e nela vários projetos e contas diferentes atreladas a cada projeto.
 Ocorreu um cenário em que em uma conta de faturamento, foram criados 2 projetos e uma conta diferente como Owner para cada projeto.
