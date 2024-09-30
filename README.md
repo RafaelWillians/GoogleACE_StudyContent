@@ -73,3 +73,5 @@ Carrier Peering - conexão pela internet (pública) intermediada pelas ISPs ao p
 ### Identidade e Acesso
 
 IAM - Criar e gerenciar usuários
+
+Cloud Identity - IDaaS, para maior controle de usuários, endpoins, diretórios e configurar SSO. Similar ao Entra ID.
