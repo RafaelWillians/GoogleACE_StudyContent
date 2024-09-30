@@ -28,7 +28,13 @@
 ### Auditoria
 * Checar regularmente os Cloud Audit Logs para auditar as mudanças nas políticas do IAM.
 * Auditar quem pode editar as políticas IAM nos projetos.
+* Exportar os logs de auditoria no Cloud Storage para armazenamento de longo prazo.* (ATENÇÃO! Caso utilize Google Cloud apenas para uso pessoal, isso resulta em custos de armazenamento. Porém para empresas, por regulamentos e leis, pode ser necessário mesmo assim armazenar os logs.)
+* Auditar regularmente as chaves das contas de serviço.
+* Restringir acesso aos logs.
 
-
+### Gerenciamento de políticas
+* Use política no nível de organização, caso necessite conceder acesso a todos os projetos na organização.
+* Sempre que possível, atribuir roles a um Google Group em vez de usuários individualmente.
+* Quando necessitar liberar várias roles para um trabalho específico, em vez disso crie um Google Group.
 
 
