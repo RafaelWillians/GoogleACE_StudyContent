@@ -147,3 +147,17 @@ Mais precisamente, adiciona a policy binding de atribuir essa role a este usuá
 ```
 gcloud projects add-iam-policy-binding nome-projeto-1234 --member user:teste@gmail.com --role roles/storage.admin
 ```
+
+Listar contas de serviço
+```
+gcloud iam service-accounts list
+```
+
+Criar conta de serviço
+```
+gcloud iam service-accounts create nome-service-account123 --display-name='conta-servico-teste'
+```
+
+
+
+
