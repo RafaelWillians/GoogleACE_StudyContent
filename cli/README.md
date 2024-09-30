@@ -118,7 +118,7 @@ source ~/.bashrc
 
 Mostrar a política IAM (em JSON ou YAML) de um projeto.
 ```
-gcloud projects get-iam-policy nome-policy-1234
+gcloud projects get-iam-policy nome-projeto-1234
 ```
 
 Mostrar a política IAM de um diretório (folder).
@@ -131,4 +131,8 @@ Mostrar a política IAM de uma organização.
 gcloud organizations get-iam-policy id-organization
 ```
 
+Atribui uma política em YAML ao projeto.
+```
+gcloud projects set-iam-policy nome-projeto-1234 policy.yaml
+```
 
