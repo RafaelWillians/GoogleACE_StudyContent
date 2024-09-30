@@ -163,4 +163,18 @@ Atribuir role storage.objectViewer à conta de serviço
 gcloud projects add-iam-policy-binding nome-projeto-1234 --member 'serviceAccount:nome-service-account123@nome-projeto-1234.iam.gserviceaccount.com' --role 'roles/storage.objectViewer'
 ```
 
+Anexar a conta de serviço a uma instância de Compute Engine:
+* Primeiro, parar a instância
+```
+gcloud compute instances stop nome-instancia --zone nome-zona
+```
 
+* Depois, anexar a conta à instância
+```
+gcloud compute instances set-service-account nome-instancia --zone nome-zona --service-account nome-service-account123@nome-projeto-1234.iam.gserviceaccount.com
+```
+
+* Depois, iniciar a instância
+```
+gcloud instances start nome-instancia --zone nome-zona
+```
