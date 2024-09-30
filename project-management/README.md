@@ -8,7 +8,7 @@ Ao criar, o nome do projeto não precisa ser único. Porém o ID de projeto (
 No Google Cloud, você pode trabalhar com a hierarquia de ter uma organização e nela vários projetos e contas diferentes atreladas a cada projeto.
 Ocorreu um cenário em que em uma conta de faturamento, foram criados 2 projetos e uma conta diferente como Owner para cada projeto.
 
-!['projetos.png](/project-management/pics/projetos.png)
+![projetos.png](/project-management/pics/projetos.png)
 
 Utilizando a conta raíz, que é a conta de faturamento e que iniciou o uso da nuvem, abrimos o Menu > IAM > Manage Resources para mostrar a tela com os projetos. Porém consta apenas 1 projeto!
 
