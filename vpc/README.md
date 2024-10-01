@@ -69,7 +69,7 @@ Criar VPC Custom com subrede pública e privada
 ```
 gcloud compute networks create custom \
  --project=nome-projeto --description=descricao \
- vpc network \
+ vpc\ network \
  --subnet-mode=custom \ 
  --bgp-routing-mode=regional
 
