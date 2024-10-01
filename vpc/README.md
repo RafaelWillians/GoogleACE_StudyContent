@@ -32,6 +32,18 @@ Ver informações da subrede.
 gcloud compute networks subnets describe nome-subrede --region=nome-regiao
 ```
 
+Reservar endereço IP Regional
+```
+gcloud compute addresses create nome-reserva --region nome-regiao
+```
+
+Reservar IP Global
+```
+gcloud compute addresses create nome-reserva --global --ip-version [ipv4 | ipv6]
+```
+
+
+
 
 
 
