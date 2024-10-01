@@ -13,12 +13,14 @@ Após expandir, não é possível desfazer.
 
 Subredes não podem se sobrepor no range de IP. 
 
-IP's reservados
+#### IP's reservados
 
-Primeiro endereço (exemplo: 172.0.0.0/20): para a rede
-Segundo endereço (exemplo: 172.0.0.1/20): gateway padrão
-Penúltimo endereço (exemplo: 172.0.0.254/20): para uso futuro do Google Cloud
-Último endereço (exemplo: 172.0.0.255/20): broadcast
+| Endereços   | Exemplo   | Função   |
+|------------|------------|------------|
+| Primeiro endereço | 172.0.0.0/20 | Determinar a rede |
+| Segundo endereço | 172.0.0.1/20 | Gateway padrão |
+| Penúltimo endereço | 172.0.0.254/20 | para uso futuro do Google Cloud |
+| Último endereço | 172.0.0.255/20 | Broadcast |
 
 ## Comandos CLI
 
