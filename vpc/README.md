@@ -11,7 +11,9 @@ Para excluir uma VPC, caso tenha recursos nela, é necessário excluir primeiro 
 É possível expandir um range de IP de uma VPC. Limite máximo de range de IP é /16.
 Após expandir, não é possível desfazer.
 
-Subredes não podem se sobrepor no range de IP. 
+Subredes não podem se sobrepor no range de IP.
+
+IP's reservados precisam ser explicitamente removidos caso não desejar mais usar. Excluir instância que utiliza IP reservado não exclui esta reserva. 
 
 #### IP's reservados
 
@@ -42,6 +44,10 @@ gcloud compute addresses create nome-reserva --region nome-regiao
 Reservar IP Global
 ```
 gcloud compute addresses create nome-reserva --global --ip-version [ipv4 | ipv6]
+```
+Listar os IPs reservados (internos e externos)
+```
+gcloud compute addresses list
 ```
 
 
