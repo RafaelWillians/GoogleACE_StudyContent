@@ -1,8 +1,10 @@
 # Google Associate Cloud Engineer
 
-Repositório com conteúdos de estudo da certificação Google ACE e utilitários para a nuvem
-Repositório com Google SDK já pronto para usar via GitHub Codespaces. Em breve estará pré-configurado para GitPod.
-Caso desejar, execute o script ./gcloud-login.sh para efetuar login no Google Cloud via terminal.
+Repositório com conteúdos de estudo da certificação Google ACE e utilitários para a nuvem.
+
+Repositório com Google SDK já pronto para usar via GitHub Codespaces e GitPod.
+
+Caso desejar, após abrir via Codespaces/GitPod, execute o script ./gcloud-login.sh para efetuar login no Google Cloud via terminal.
 
 ## Utilitários
 
