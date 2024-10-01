@@ -50,7 +50,7 @@ Memorystore - banco de dados de memória totalmente gerenciado
 
 ### Redes
 
-Virtual Private Cloud (VPC) - redes e subredes
+[Virtual Private Cloud (VPC)](/vpc/README.md) - redes e subredes
 
 Firewall Rules - firewall
 
