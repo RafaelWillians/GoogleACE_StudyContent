@@ -7,4 +7,11 @@ Expandir o range de IPs da subrede.
 gcloud compute networks subnets expand-ip-range nome-subrede --region=nome-regiao --prefix-length=16
 ```
 
+Ver informações da subrede.
+```
+gcloud compute networks subnets describe nome-subrede --region=nome-regiao
+```
+
+
+
 
