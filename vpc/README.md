@@ -8,7 +8,8 @@ As VPCs Custom Mode permitem criar as subredes da forma que desejar.
 
 Para excluir uma VPC, caso tenha recursos nela, é necessário excluir primeiro os recursos para então poder excluir a VPC.
 
-Limite máximo de range de IP é /16.
+É possível expandir um range de IP de uma VPC. Limite máximo de range de IP é /16.
+Após expandir, não é possível desfazer.
 
 Subredes não podem se sobrepor no range de IP. 
 
