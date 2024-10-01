@@ -76,13 +76,13 @@ gcloud compute networks create custom \
 gcloud compute networks subnets create public \
  --project=nome-projeto \
  --range=ip-range \
- --network=custom \
+ --network=nome-rede \
  --region=nome-regiao
 
 gcloud compute networks subnets create private \
  --project=nome-projeto \
  --range=ip-range \
- --network=custom \
+ --network=nome-rede \
  --region=nome-regiao
 ```
 
