@@ -50,7 +50,10 @@ Listar os IPs reservados (internos e externos)
 gcloud compute addresses list
 ```
 
-
+Promover IP externo efêmero para estático
+```
+gcloud compute addresses create promoted-external --addresses ip-externo --region nome-regiao
+```
 
 
 
