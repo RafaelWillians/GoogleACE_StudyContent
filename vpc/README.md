@@ -45,7 +45,7 @@ Reservar IP Global
 ```
 gcloud compute addresses create nome-reserva --global --ip-version [ipv4 | ipv6]
 ```
-Listar os IPs reservados (internos e externos)
+Listar os IP's reservados (internos e externos)
 ```
 gcloud compute addresses list
 ```
@@ -55,7 +55,14 @@ Promover IP externo efêmero para estático
 gcloud compute addresses create promoted-external --addresses ip-externo --region nome-regiao
 ```
 
+Excluir IP's internos promovidos a estáticos
+```
+gcloud compute addresses delete promoted-static --region nome-regiao
+```
 
-
+Excluir IP's internos estáticos
+```
+gcloud compute addresses delete static-internal --region nome-regiao
+```
 
 
