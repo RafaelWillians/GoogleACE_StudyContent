@@ -65,4 +65,24 @@ Excluir IP's internos estáticos
 gcloud compute addresses delete static-internal --region nome-regiao
 ```
 
+Criar VPC Custom com subrede pública e privada
+```
+gcloud compute networks create custom \
+ --project=nome-projeto --description=descricao \
+ vpc network \
+ --subnet-mode=custom \ 
+ --bgp-routing-mode=regional
+
+gcloud compute networks subnets create public \
+ --project=nome-projeto \
+ --range=ip-range \
+ --network=custom \
+ --region=nome-regiao
+
+gcloud compute networks subnets create private \
+ --project=nome-projeto \
+ --range=ip-range \
+ --network=custom \
+ --region=nome-regiao
+```
 
